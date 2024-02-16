@@ -28,12 +28,12 @@ void insert_element(int arr[], int *size, int position, int element)
 {
     if (*size >= MAX_SIZE)
     {
-        printf("Array is full, cannot insert more elements\n");
+        printf("Cannot insert\n");
         return;
     }
     if (position < 0 || position > *size)
     {
-        printf("Invalid position to insert element\n");
+        printf("Invalid position \n");
         return;
     }
     for (int i = *size; i > position; i--)
@@ -124,7 +124,7 @@ int main()
                 break;
             case 'b':
                 printf("Enter the element to insert: ");
-                scanf("%d", &position);
+                scanf("%d", &element);
                 printf("Enter the position to insert: ");
                 scanf("%d", &position);
                 insert_element(arr, &size, position, element);
