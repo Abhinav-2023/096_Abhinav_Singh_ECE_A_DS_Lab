@@ -1,4 +1,13 @@
 /*
+NAME :- ABHINAV SINGH
+BRANCH :- ECE
+SECTION :- A
+ROLL NUMBER :- 2023ECE096
+EXAM ROLL NUMBER :- 23294917096
+ENROLLMENT NUMBER :- 23DOECBTEC000096
+*/
+
+/*
 Write menu-driven program in C to input 1D array (dynamic) and perform following operations:
 a. Linear search for an element.
 b. Inserting an element at specified position.
