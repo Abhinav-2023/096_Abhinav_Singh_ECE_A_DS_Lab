@@ -1,3 +1,16 @@
+/*
+NAME :- ABHINAV SINGH
+BRANCH :- ECE
+SECTION :- A
+ROLL NUMBER :- 2023ECE096
+EXAM ROLL NUMBER :- 23294917096
+ENROLLMENT NUMBER :- 23DOECBTEC000096
+*/
+
+/*
+Write a C program to check whether given matrix is sparse matrix or not. If it is, generate sparse matrix with linked list implementation.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -9,7 +22,7 @@ struct Node
 
 typedef struct Node Node;
 
-int sparse_matrix(int matrix[][100], int rows, int cols)
+int sparse_matrix(int matrix[][10], int rows, int cols)
 {
     int count = 0;
 
@@ -28,7 +41,7 @@ int sparse_matrix(int matrix[][100], int rows, int cols)
         return 1;
 }
 
-Node *create_Sparse_Matrix(int matrix[][100], int rows, int cols)
+Node *create_sparse_matrix(int matrix[][10], int rows, int cols)
 {
     Node *head = NULL;
 
@@ -38,20 +51,20 @@ Node *create_Sparse_Matrix(int matrix[][100], int rows, int cols)
         {
             if (matrix[i][j] != 0)
             {
-                Node *newNode = (Node *)malloc(sizeof(Node));
-                newNode->rows = i;
-                newNode->cols = j;
-                newNode->value = matrix[i][j];
-                newNode->next = NULL;
+                Node *new_node = (Node *)malloc(sizeof(Node));
+                new_node->rows = i;
+                new_node->cols = j;
+                new_node->value = matrix[i][j];
+                new_node->next = NULL;
 
                 if (head == NULL)
-                    head = newNode;
+                    head = new_node;
                 else
                 {
                     Node *temp = head;
                     while (temp->next != NULL)
                         temp = temp->next;
-                    temp->next = newNode;
+                    temp->next = new_node;
                 }
             }
         }
@@ -74,7 +87,7 @@ void display_sparse_matrix(Node *head)
 
 int main()
 {
-    int matrix[100][100], rows, cols;
+    int matrix[10][10], rows, cols;
 
     printf("Enter number of rows and columns of matrix: ");
     scanf("%d %d", &rows, &cols);
@@ -86,6 +99,16 @@ int main()
         {
             scanf("%d", &matrix[i][j]);
         }
+    }
+
+    printf("The matrix: \n");
+    for (int i = 0; i < rows; ++i)
+    {
+        for (int j = 0; j < cols; ++j)
+        {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
     }
 
     if (sparse_matrix(matrix, rows, cols))

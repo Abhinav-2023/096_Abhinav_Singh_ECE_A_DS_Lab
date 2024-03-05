@@ -1,3 +1,21 @@
+/*
+NAME :- ABHINAV SINGH
+BRANCH :- ECE
+SECTION :- A
+ROLL NUMBER :- 2023ECE096
+EXAM ROLL NUMBER :- 23294917096
+ENROLLMENT NUMBER :- 23DOECBTEC000096
+*/
+
+/*
+Write a C Program to Implement the following operations on Strings without using in-built functions present in Libraries.
+i) String Length  
+ii) String Reversal
+iii) String Compare
+iv) String Concatenate
+v) String Copy
+*/
+
 #include <stdio.h>
 #include <string.h>
 

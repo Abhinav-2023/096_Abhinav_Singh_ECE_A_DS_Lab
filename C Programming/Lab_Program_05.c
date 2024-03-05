@@ -1,3 +1,16 @@
+/*
+NAME :- ABHINAV SINGH
+BRANCH :- ECE
+SECTION :- A
+ROLL NUMBER :- 2023ECE096
+EXAM ROLL NUMBER :- 23294917096
+ENROLLMENT NUMBER :- 23DOECBTEC000096
+*/
+
+/*
+Write a C program to check whether given matrix is sparse matrix or not. If it is, generate sparse matrix with array implementation.
+*/
+
 #include <stdio.h>
 
 void input_matrix(int matrix[10][10], int rows, int cols)
