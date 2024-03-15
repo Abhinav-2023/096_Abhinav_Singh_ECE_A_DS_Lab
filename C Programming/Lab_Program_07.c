@@ -1,4 +1,10 @@
 /*
+NAME : ABHINAV SINGH
+BRANCH : ECE-A
+ENROLLMENT NUMBER : 23DOECBTEC000096
+*/
+
+/*
 Design a C program to implement sparse matrix representation and perform following Operations:
 1. createSparseMat(rows, cols): Create a new sparse matrix with the specified number of rows and columns.
 2. setValue(row, col, value) : Set the value at the specified row and column.
@@ -17,13 +23,15 @@ Design a C program to implement sparse matrix representation and perform followi
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct {
+typedef struct
+{
     int row;
     int col;
     int value;
 } Element;
 
-typedef struct {
+typedef struct
+{
     int rows;
     int cols;
     int count;
@@ -44,7 +52,8 @@ sparse_matrix *multiply(sparse_matrix *matrix1, sparse_matrix *matrix2);
 int **toDenseArray(sparse_matrix *matrix);
 void printMatrix(int **array, int rows, int cols);
 
-sparse_matrix *create_sparse_matrix(int rows, int cols) {
+sparse_matrix *create_sparse_matrix(int rows, int cols)
+{
     sparse_matrix *matrix = (sparse_matrix *)malloc(sizeof(sparse_matrix));
     matrix->rows = rows;
     matrix->cols = cols;
@@ -53,14 +62,18 @@ sparse_matrix *create_sparse_matrix(int rows, int cols) {
     return matrix;
 }
 
-void setValue(sparse_matrix *matrix, int row, int col, int value) {
-    if (row < 0 || row >= matrix->rows || col < 0 || col >= matrix->cols) {
+void setValue(sparse_matrix *matrix, int row, int col, int value)
+{
+    if (row < 0 || row >= matrix->rows || col < 0 || col >= matrix->cols)
+    {
         printf("Invalid position.\n");
         return;
     }
 
-    for (int i = 0; i < matrix->count; i++) {
-        if (matrix->elements[i].row == row && matrix->elements[i].col == col) {
+    for (int i = 0; i < matrix->count; i++)
+    {
+        if (matrix->elements[i].row == row && matrix->elements[i].col == col)
+        {
             matrix->elements[i].value = value;
             return;
         }
@@ -73,24 +86,32 @@ void setValue(sparse_matrix *matrix, int row, int col, int value) {
     matrix->elements[matrix->count - 1].value = value;
 }
 
-int getValue(sparse_matrix *matrix, int row, int col) {
-    for (int i = 0; i < matrix->count; i++) {
-        if (matrix->elements[i].row == row && matrix->elements[i].col == col) {
+int getValue(sparse_matrix *matrix, int row, int col)
+{
+    for (int i = 0; i < matrix->count; i++)
+    {
+        if (matrix->elements[i].row == row && matrix->elements[i].col == col)
+        {
             return matrix->elements[i].value;
         }
     }
     return 0;
 }
 
-void addValue(sparse_matrix *matrix, int row, int col, int value) {
+void addValue(sparse_matrix *matrix, int row, int col, int value)
+{
     int currentValue = getValue(matrix, row, col);
     setValue(matrix, row, col, currentValue + value);
 }
 
-void removeValue(sparse_matrix *matrix, int row, int col) {
-    for (int i = 0; i < matrix->count; i++) {
-        if (matrix->elements[i].row == row && matrix->elements[i].col == col) {
-            for (int j = i; j < matrix->count - 1; j++) {
+void removeValue(sparse_matrix *matrix, int row, int col)
+{
+    for (int i = 0; i < matrix->count; i++)
+    {
+        if (matrix->elements[i].row == row && matrix->elements[i].col == col)
+        {
+            for (int j = i; j < matrix->count - 1; j++)
+            {
                 matrix->elements[j] = matrix->elements[j + 1];
             }
             matrix->count--;
@@ -100,43 +121,54 @@ void removeValue(sparse_matrix *matrix, int row, int col) {
     }
 }
 
-int getNumberOfRows(sparse_matrix *matrix) {
+int getNumberOfRows(sparse_matrix *matrix)
+{
     return matrix->rows;
 }
 
-int getNumberOfColumns(sparse_matrix *matrix) {
+int getNumberOfColumns(sparse_matrix *matrix)
+{
     return matrix->cols;
 }
 
-sparse_matrix *transpose(sparse_matrix *matrix) {
+sparse_matrix *transpose(sparse_matrix *matrix)
+{
     sparse_matrix *transposed = create_sparse_matrix(matrix->cols, matrix->rows);
 
-    for (int i = 0; i < matrix->count; i++) {
+    for (int i = 0; i < matrix->count; i++)
+    {
         setValue(transposed, matrix->elements[i].col, matrix->elements[i].row, matrix->elements[i].value);
     }
 
     return transposed;
 }
 
-void multiplyScalar(sparse_matrix *matrix, int factor) {
-    for (int i = 0; i < matrix->count; i++) {
+void multiplyScalar(sparse_matrix *matrix, int factor)
+{
+    for (int i = 0; i < matrix->count; i++)
+    {
         matrix->elements[i].value *= factor;
     }
 }
 
-void add(sparse_matrix *matrix, sparse_matrix *other) {
-    if (matrix->rows != other->rows || matrix->cols != other->cols) {
+void add(sparse_matrix *matrix, sparse_matrix *other)
+{
+    if (matrix->rows != other->rows || matrix->cols != other->cols)
+    {
         printf("Matrix dimensions does not match.\n");
         return;
     }
 
-    for (int i = 0; i < other->count; i++) {
+    for (int i = 0; i < other->count; i++)
+    {
         addValue(matrix, other->elements[i].row, other->elements[i].col, other->elements[i].value);
     }
 }
 
-sparse_matrix *multiply(sparse_matrix *matrix1, sparse_matrix *matrix2) {
-    if (matrix1->cols != matrix2->rows) {
+sparse_matrix *multiply(sparse_matrix *matrix1, sparse_matrix *matrix2)
+{
+    if (matrix1->cols != matrix2->rows)
+    {
         printf("Matrix dimensions are not valid.\n");
         return NULL;
     }
@@ -144,20 +176,26 @@ sparse_matrix *multiply(sparse_matrix *matrix1, sparse_matrix *matrix2) {
     sparse_matrix *result = create_sparse_matrix(matrix1->rows, matrix2->cols);
 }
 
-int **toDenseArray(sparse_matrix *matrix) {
+int **toDenseArray(sparse_matrix *matrix)
+{
     int **denseArray = (int **)malloc(matrix->rows * sizeof(int *));
-    for (int i = 0; i < matrix->rows; i++) {
+    for (int i = 0; i < matrix->rows; i++)
+    {
         denseArray[i] = (int *)malloc(matrix->cols * sizeof(int));
-        for (int j = 0; j < matrix->cols; j++) {
+        for (int j = 0; j < matrix->cols; j++)
+        {
             denseArray[i][j] = getValue(matrix, i, j);
         }
     }
     return denseArray;
 }
 
-void printMatrix(int **array, int rows, int cols) {
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
+void printMatrix(int **array, int rows, int cols)
+{
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
             printf("%d\t", array[i][j]);
         }
         printf("\n");
@@ -244,5 +282,4 @@ int main(void)
     for (int i = 0; i < 3; i++)
         free(denseArray[i]);
     free(denseArray);
-
 }
