@@ -1,3 +1,15 @@
+/*
+NAME :- ABHINAV SINGH
+BRANCH :- ECE
+SECTION :- A
+ROLL NUMBER :- 2023ECE096
+EXAM ROLL NUMBER :- 23294917096
+ENROLLMENT NUMBER :- 23DOECBTEC000096
+*/
+
+/*
+Implement Stack ADT and  its operation using Linked List.
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
